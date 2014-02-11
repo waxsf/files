@@ -5,3 +5,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?label WHERE { ?label rdfs:label "red"@en}
 
 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#subject>
+SELECT ?label ?subject
+WHERE { ?label rdfs:label "red" .
+        ?label dcterms:subject ?subject 
+      }
