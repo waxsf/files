@@ -11,3 +11,9 @@ SELECT ?label ?subject
 WHERE { ?label rdfs:label "red" .
         ?label dcterms:subject ?subject 
       }
+
+PREFIX dbpprop: <http://dbpedia.org/property/> 
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dcterms: <http://purl.org/dc/terms>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?value WHERE { <http://dbpedia.org/property/red> <http://purl.org/dc/terms/subject> ?value}
