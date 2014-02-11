@@ -1,0 +1,7 @@
+PREFIX dbpprop: <http://dbpedia.org/property/> 
+PREFIX dbpedia: <http://dbpedia.org/resource/>
+PREFIX dcterms: <http://purl.org/dc/terms>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?label WHERE { ?label rdfs:label "red"@en}
+
+
