@@ -38,3 +38,11 @@ results = sparql.query().convert()
 
 for result in results["results"]["bindings"]:
     print(result["label"]["value"])
+    
+    
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX subject: <http://purl.org/dc/terms/subject>
+SELECT * WHERE { ?label rdfs:label "Red"@en .
+                 ?label dcterms:subject ?category.}
+    
