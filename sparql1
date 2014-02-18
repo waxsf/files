@@ -55,3 +55,7 @@ SELECT * WHERE { ?label rdfs:label "Red"@en;
                   ?word dcterms:subject ?category. 
                 }
     
+SELECT * WHERE { 
+                 ?label rdfs:label "Workout"@en;
+                 dbpedia-owl:wikiPageRedirects ?uri} 
+    
