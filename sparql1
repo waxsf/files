@@ -58,4 +58,15 @@ SELECT * WHERE { ?label rdfs:label "Red"@en;
 SELECT * WHERE { 
                  ?label rdfs:label "Workout"@en;
                  dbpedia-owl:wikiPageRedirects ?uri} 
+______________________________________________________________________________
+CategoryWordsExpansion.java
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX subject: <http://purl.org/dc/terms/subject>
+
+SELECT distinct ?label WHERE {?subject dcterms:subject <http://dbpedia.org/resource/Category:Apples>;
+rdfs:label ?label 
+FILTER(LANGMATCHES(LANG(?label), "en")) }
+_________________________________________________________________________________
+
+
     
