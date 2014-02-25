@@ -68,5 +68,14 @@ rdfs:label ?label
 FILTER(LANGMATCHES(LANG(?label), "en")) }
 _________________________________________________________________________________
 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX subject: <http://purl.org/dc/terms/subject>
+SELECT * WHERE { 
+                 ?url rdfs:label "Red"@en
+                 OPTIONAL{?uri dcterms:subject ?category}
+                 OPTIONAL{?children dcterms:subject ?uri}
+                 OPTIONAL{?sibling dcterms:subject ?category}
+                 OPTIONAL{?children dcterms:subject ?wife}
+               }
 
     
