@@ -1,0 +1,19 @@
+//div[@class="page-of-pages"]/text()
+
+import sys
+from scrapy.selector import Selector
+
+page_re = '"/biz/[^"]*"'
+for line in sys.stdin:
+    line = line.decode('utf-8')
+    line = line.rstrip('\n')
+    sel = Selector(response=None, text=line, type='xml')
+    sel.remove_namespaces()
+
+    page_str = sel.re(page_re)
+    
+    page_str = set(page_str)
+    for item in page_str:
+        print 'http://www.yelp.com' + item[1:-1] 
+        
+
