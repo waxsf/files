@@ -11,7 +11,7 @@ void check(bool &flag, int step, vector<bool> visit, vector<int> num, int n, int
 
 	int len = visit.size();
 	if(step == len/2){
-		if(a*b == n){
+		if(a*b == n and !(a%10 == 0 and b%10 == 0)){
 			flag = true;
 			if(a > b) swap(a,b);
 			cout<<"It is a Vampire number"<<endl;
