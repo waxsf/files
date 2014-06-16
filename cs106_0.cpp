@@ -32,9 +32,7 @@ void check(bool &flag, int step, vector<bool> visit, vector<int> num, int n, int
 			else if(j>0 and num[j-1] == num[j] and !visit[j-1]) continue;
 			visit[j] = true;
 			b += num[j] * digit;
-			//cout<<a<<" "<<b<<endl;
 			if(a*b%(digit*10) == n%(digit*10)){
-				//cout<<a<<" "<<b<<" "<<n<<" "<<digit*10<<endl;
 				check(flag, step+1, visit, num, n, a, b);
 			}
 			b -= num[j] * digit;
