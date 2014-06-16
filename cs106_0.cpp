@@ -13,6 +13,7 @@ void check(bool &flag, int step, vector<bool> visit, vector<int> num, int n, int
 	if(step == len/2){
 		if(a*b == n){
 			flag = true;
+			if(a > b) swap(a,b);
 			cout<<"It is a Vampire number"<<endl;
 			cout<<"Two numbers are "<<a<<" "<<b<<endl;
 		}
