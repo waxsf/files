@@ -1,0 +1,76 @@
+image bg meadow = "meadow.jpg"
+image bg uni = "uni.jpg"
+image bg pic1 = "1.jpg"
+image bg pic2 = "2.jpg"
+
+image sylvie smile = "sylvie_smile.png"
+image lily surprised = "sylvie_surprised.png"
+
+define s = Character('Sylvie', color="#c8ffc8", image="sylvie")
+define m = Character('Me', color="#c8c8ff")
+init python:
+    import random
+
+label start:
+    show bg uni
+    with dissolve
+    show lily surprised
+    $ n = 1
+    $ win_num = 0
+    while n < 6:
+        s "Round [n]"
+        $ n += 1
+        # ROCK is 1
+        # scissors is 2
+        # cloth is 3
+        $ solution_auto = random.randint(1, 3)
+        $ player_choice = 0
+        
+        menu:
+            s "Choose what you want:"
+            "ROCK":
+                call cal(solution_auto) from _call_cal
+                if player_choice == 1:
+                    call tie
+                elif (player_choice < solution_auto && solution_auto - player_choice == 1) || player_choice - solution_auto == 2:
+                    call win
+                else:
+                    call lose
+            "SCISSORS":
+                call cal(solution_auto) from _call_cal_1
+                $ player_choice = 1
+            "CLOTH":
+                call cal(solution_auto) from _call_cal_2
+                $ player_choice = 2
+        if player_choice == 1:
+            call tie
+        elif (player_choice < solution_auto && solution_auto - player_choice == 1) || player_choice - solution_auto == 2:
+            call win
+        else:
+            call lose
+    $ win_rate = win_num * 1.0 / 10
+    s "win rate is [win_rate]"
+    
+    return
+    
+            
+label win:
+    s "You win"
+    return
+    
+label lose:
+    s "You lose"
+    return
+    
+label tie:
+    s "tie"
+    return
+    
+label cal(a):
+    if a == 1:
+        s "ROCK"
+    elif a == 2:
+        s "SCISSORS"
+    else:
+        s "CLOTH"
+    return
