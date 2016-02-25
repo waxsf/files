@@ -1,0 +1,40 @@
+define e = ("sasa")
+
+init python:
+    enemy_health = 40
+    enemy_attack = 3
+    health = 10
+    attack = 5
+    num_medical = 3
+    medical_recover = 10
+    
+label start:
+    if health <= 0:
+        "You die"
+        "--end--"
+        return
+    menu:
+        "Choose operation"
+        "HIT":
+            $ enemy_health -= attack
+            "You enemy's health is [enemy_health:+]"
+            jump enemy
+        "Take some medicine" if num_medical > 0:
+            "You take the medicine"
+            $ num_medical -= 1
+            $ health += medical_recover
+        "Have a Rest":
+            $ health += attack + 1
+            "You health now is [health:+]"
+            
+            
+            
+label enemy:
+    if enemy_health <= 0:
+        "Your enemy die"
+        "--end--"
+        return
+    $ health -= enemy_attack
+    "You are hitted and health drop to [health]"
+    with vpunch
+    jump start
